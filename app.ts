@@ -14,14 +14,21 @@
 // }
 
 // TS identifies object type by inference.
-const person = {
+const person: {
+    name: string;
+    age: number;
+    hobbies: string[];
+    roles: [number, string];
+} = {
     name: "Yousuf",
     age: 15,
-    hobbies: ["Sports", "Cooking"]
+    hobbies: ["Sports", "Cooking"],
+    roles: [2,'author']
 }
 
 // Explicit declaration of Array type
 let favoriteActivities: string[];
 favoriteActivities = ["Sports", "Cooking"];
+
 
 console.log(person.name);
