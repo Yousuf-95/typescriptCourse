@@ -26,6 +26,13 @@ const person: {
     roles: [2,'author']
 }
 
+// "enum" type declaration
+enum Designation {"Manager", "Full Stack Developer", "Backend Developer"};
+
+const enumTest = {
+    properties: Designation["Backend Developer"]
+}
+
 // Explicit declaration of Array type
 let favoriteActivities: string[];
 favoriteActivities = ["Sports", "Cooking"];
