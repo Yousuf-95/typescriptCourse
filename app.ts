@@ -29,6 +29,11 @@ const person: {
 // "enum" type declaration
 enum Designation {"Manager", "Full Stack Developer", "Backend Developer"};
 
+// "any" type declaration
+let anyType: any;
+anyType = 3;
+anyType = 'Assign "number" ,"string", "boolean" or any other type of value'; 
+
 const enumTest = {
     properties: Designation["Backend Developer"]
 }
