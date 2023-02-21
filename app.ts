@@ -38,6 +38,18 @@ const enumTest = {
     properties: Designation["Backend Developer"]
 }
 
+// "union" type declaration
+function combine(input1:number | string, input2:number | string) {
+    let result: number | string; 
+    if(typeof input1 === 'number' && typeof input2 === 'number') {
+        result = input1 + input2;
+        return result;
+    }
+    else {
+        result = input1.toString() + input2.toString();
+    }
+}
+
 // Explicit declaration of Array type
 let favoriteActivities: string[];
 favoriteActivities = ["Sports", "Cooking"];
