@@ -55,6 +55,12 @@ function combine(input1:number | string, input2:number | string) {
 // * Examples:
 let literalType: 'manager' | 'director'; // this variable can have either of the two string values mentioned
 let literalType2: 25 | 30; // this variable can have either of the two numbers mentioned.
+let literalType3: number | string; // this can be simplified with type alias/custom type.
+
+// type alias/custom type
+type NumberOrString = number | string;
+
+let literalType4: NumberOrString; // using custom type.
 
 
 // Explicit declaration of Array type
