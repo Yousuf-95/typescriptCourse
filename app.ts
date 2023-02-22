@@ -50,6 +50,13 @@ function combine(input1:number | string, input2:number | string) {
     }
 }
 
+// "literal" type declaration
+//  Literals are exact values that are JavaScript primitives.
+// * Examples:
+let literalType: 'manager' | 'director'; // this variable can have either of the two string values mentioned
+let literalType2: 25 | 30; // this variable can have either of the two numbers mentioned.
+
+
 // Explicit declaration of Array type
 let favoriteActivities: string[];
 favoriteActivities = ["Sports", "Cooking"];
