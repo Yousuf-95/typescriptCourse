@@ -59,8 +59,19 @@ let literalType3: number | string; // this can be simplified with type alias/cus
 
 // type alias/custom type
 type NumberOrString = number | string;
-
 let literalType4: NumberOrString; // using custom type.
+
+// Assign a return type to function
+function add(n1:number, n2:number):number {
+    return n1 + n2;
+}
+
+// return types for function that doesn't return anything is 'void'
+function printResult(num:number) {
+    console.log("Result is: ", num);
+}
+
+printResult(add(5,12));
 
 
 // Explicit declaration of Array type
