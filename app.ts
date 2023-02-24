@@ -73,6 +73,17 @@ function printResult(num:number) {
 
 printResult(add(5,12));
 
+// Defining 'Function' type
+// This 'Function' type declaration will allow the variable to hold any function.
+let functionType: Function;
+functionType = add;
+functionType = printResult;
+
+// This 'Function' type declaration will allow the variable to hold any function that accepts two numbers and returns a number.
+let functionType2: (n1: number, n2: number) => number;
+functionType2 = add;
+functionType2 = printResult // this will not be allowed.
+
 
 // Explicit declaration of Array type
 let favoriteActivities: string[];
