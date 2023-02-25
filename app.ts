@@ -99,3 +99,15 @@ unknownType = 5; // this works works
 unknownType = 'Some string'; // this works as well
 userName = unknownType // this is not allowed. It will be allowed if 'un knownType' is set to 'any' type.
 
+// Defining 'never' type
+// A function's return type is 'never' if it never returns anything
+// Only 'never' type is assigned to another 'never'
+// * Example 1
+function generateError(message: string, errorCode: number): never {
+    throw {message, errorCode};
+}
+
+// * Example 2
+function infiniteLoop(): never {
+    while(true) {};
+}
