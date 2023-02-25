@@ -26,6 +26,12 @@ const person: {
     roles: [2,'author']
 }
 
+console.log(person.name);
+
+// Explicit declaration of Array type
+let favoriteActivities: string[];
+favoriteActivities = ["Sports", "Cooking"];
+
 // "enum" type declaration
 enum Designation {"Manager", "Full Stack Developer", "Backend Developer"};
 
@@ -61,6 +67,7 @@ let literalType3: number | string; // this can be simplified with type alias/cus
 type NumberOrString = number | string;
 let literalType4: NumberOrString; // using custom type.
 
+
 // Assign a return type to function
 function add(n1:number, n2:number):number {
     return n1 + n2;
@@ -84,10 +91,11 @@ let functionType2: (n1: number, n2: number) => number;
 functionType2 = add;
 functionType2 = printResult // this will not be allowed.
 
+// Defining 'unknown' type
+let unknownType: unknown;
+let userName:string;
 
-// Explicit declaration of Array type
-let favoriteActivities: string[];
-favoriteActivities = ["Sports", "Cooking"];
+unknownType = 5; // this works works
+unknownType = 'Some string'; // this works as well
+userName = unknownType // this is not allowed. It will be allowed if 'un knownType' is set to 'any' type.
 
-
-console.log(person.name);
