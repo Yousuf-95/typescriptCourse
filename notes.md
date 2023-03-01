@@ -20,5 +20,14 @@ All numbers in TypeScript are either floating-point values of bigint integers. T
 
 ```TS
 let numberType: number = 42;
-let bigintType: bigint = 9007199254740993n
+let bigintType: bigint = 9007199254740993n;
+```
+
+### String type
+Typescript uses doube quotes <code>("")</code>, single quotes <code>('')</code> and back ticks <code>(``)</code> to surround string literals.
+
+```TS
+let stringType1: string = "String literal in doble quotes.";
+let stringType2: string = 'String literal in single quotes.';
+let stringType3: string = `String literal in back ticks. This can be a multi-line string unlike the other two.`
 ```
