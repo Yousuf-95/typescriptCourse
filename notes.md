@@ -31,3 +31,10 @@ let stringType1: string = "String literal in doble quotes.";
 let stringType2: string = 'String literal in single quotes.';
 let stringType3: string = `String literal in back ticks. This can be a multi-line string unlike the other two.`
 ```
+### Boolean type
+The <code>boolean</code> type allows two values: <code>true</code> <code>false</code>.
+
+```TS
+let pending: boolean = true;
+let completed: boolean = false;
+```
