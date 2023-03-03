@@ -38,3 +38,17 @@ The <code>boolean</code> type allows two values: <code>true</code> <code>false</
 let pending: boolean = true;
 let completed: boolean = false;
 ```
+
+## Object type
+The TypeScript <code>object</code> type represents all values that are not primitive type.
+
+```TS
+let employee: object;
+
+employee = {
+    firstName: 'John',
+    lastName: 'Doe',
+    age: 23,
+    jobTitle: 'Backend Engineer'
+}
+```
