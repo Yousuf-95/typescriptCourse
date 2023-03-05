@@ -52,3 +52,9 @@ employee = {
     jobTitle: 'Backend Engineer'
 }
 ```
+
+### Array type
+A TypeScript array is an ordered list of data. To declare an array that holds values of a specific type, you use the following syntax:
+```TS
+let orders: string[]
+```
