@@ -57,4 +57,15 @@ employee = {
 A TypeScript array is an ordered list of data. To declare an array that holds values of a specific type, you use the following syntax:
 ```TS
 let orders: string[]
+let numberOrString: (number | string)[];
+```
+
+### Tuple type
+A tuple works like an array with some additional considerations:
+- The number of elements in the tuple is fixed.
+- The types of elements are known, and need not be the same.
+
+For example, you can use a tuple to represent a value as a pair of a string and a number:
+```TS
+let skill: [string, number] = ["Programming", 7];
 ```
