@@ -69,3 +69,10 @@ For example, you can use a tuple to represent a value as a pair of a string and 
 ```TS
 let skill: [string, number] = ["Programming", 7];
 ```
+
+A tuple can have optional element specified using question mark (?) postfix.
+```TS
+let marks: [number, number, number, number?];
+marks = [60,70,85,45];
+marks = [80,45,33];
+```
