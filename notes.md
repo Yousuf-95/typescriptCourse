@@ -76,3 +76,30 @@ let marks: [number, number, number, number?];
 marks = [60,70,85,45];
 marks = [80,45,33];
 ```
+
+### Enum type
+An enum is a way to organize a collection of related values.
+For example, we can store employee designations:
+```TS
+enum designations {
+    Backend Developer,
+    Frontend Developer,
+    Integration Engineer
+}
+
+console.log(designations["Backend Developer"]);     // Backend Developer
+console.log(designations[0]);   // Backend Developer
+```
+
+enum values can be accessed just like properties are accessed in JavaScript object and it can also be accessed
+with numbers as shown in above example. By default, number/index starts from 0 and can be changed as required.</br>
+Example:
+```TS
+enum designations {
+    Backend Developer = 1,
+    Frontend Developer = 4,
+    Integration Engineer = 6
+}
+
+console.log(designations[1]);   // Backend Developer
+```
