@@ -54,14 +54,14 @@ employee = {
 ```
 
 ### Array type
-A TypeScript array is an ordered list of data. To declare an array that holds values of a specific type, you use the following syntax:
+A TypeScript <code>array</code> is an ordered list of data. To declare an array that holds values of a specific type, you use the following syntax:
 ```TS
 let orders: string[]
 let numberOrString: (number | string)[];
 ```
 
 ### Tuple type
-A tuple works like an array with some additional considerations:
+A <code>tuple</code> works like an array with some additional considerations:
 - The number of elements in the tuple is fixed.
 - The types of elements are known, and need not be the same.
 
@@ -78,7 +78,7 @@ marks = [80,45,33];
 ```
 
 ### Enum type
-An enum is a way to organize a collection of related values.
+An <code>enum</code> is a way to organize a collection of related values.
 For example, we can store employee designations:
 ```TS
 enum designations {
@@ -93,7 +93,7 @@ console.log(designations[0]);   // Backend Developer
 
 enum values can be accessed just like properties are accessed in JavaScript object and it can also be accessed
 with numbers as shown in above example. By default, number/index starts from 0 and can be changed as required.</br>
-Example:
+For example:
 ```TS
 enum designations {
     Backend Developer = 1,
@@ -103,3 +103,15 @@ enum designations {
 
 console.log(designations[1]);   // Backend Developer
 ```
+
+### Any type
+The <code>any</code> type allows to store any type of value in a variable. This basically means TypeScript's type checking feature will not work on that variable and will work just like in JavasScript.
+```TS
+let anyValue: any;
+anyValue = 123;
+console.log(anyType);   // 123
+anyValue = {name: "John Doe"};
+console.log(anyValue.lastname);     // undefined
+```
+
+In the above example, when accessing object properties, TypeScript will not issue any warning and will output <code>undefined</code> for any object property that doesnot exist.
