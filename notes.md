@@ -115,3 +115,18 @@ console.log(anyValue.lastname);     // undefined
 ```
 
 In the above example, when accessing object properties, TypeScript will not issue any warning and will output <code>undefined</code> for any object property that doesnot exist.
+
+### Never type
+The <code>never</code> type is a type that contains no value, i.e, no value can be assigned to a variable of type <code>never</code>.
+Typically, <code>never</code> type is used to represent return type of a function that always throws an error or a function that contains an infinite loop. Only <code>never</code> type variable can be assigned to another <code>never</code> type variable. 
+```TS
+function throwError(message: string): never {
+    throw new Error(message)
+}
+
+function infiniteLoop(): never {
+    while(true) {
+        console.log("Infinite loop");
+    }
+}
+```
