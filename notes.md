@@ -130,3 +130,9 @@ function infiniteLoop(): never {
     }
 }
 ```
+
+### Union type
+A <code>union</code> type is a type formed from two or more other types, representing values that may be any one of those types. Each of these types is called union's members.
+```TS
+let numberOrString: number | string;
+```
