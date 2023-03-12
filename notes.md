@@ -136,3 +136,13 @@ A <code>union</code> type is a type formed from two or more other types, represe
 ```TS
 let numberOrString: number | string;
 ```
+
+<hr>
+
+### Type alias
+Type aliases allow defining type with a custom name. It is a name given to any existing type.
+```TS
+type alphanumeric = number | string;
+
+let numberOrString: alphanumeric;
+``` 
