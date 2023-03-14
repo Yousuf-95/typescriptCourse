@@ -47,3 +47,11 @@ Watch for changes in a directory containing multiple TypeScript files.
 
  }
  ```
+
+ ### 4. Setting a compilation target
+Set Ecmascript version to compile the TypeScript code to.
+ ```JS
+{
+  target: "es6"
+}
+ ```
