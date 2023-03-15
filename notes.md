@@ -71,3 +71,11 @@ Works along with <code>allowJs</code> and reports errors in JavaScript files.
   "checkJs": true // false by default
 }
 ```
+
+### 7. Source Map
+Generates sourcemap files which allows debuggers to display original TypeScript files when working with generated JavaScript files.
+```JS
+{
+  "sourceMap": true
+}
+```
