@@ -55,3 +55,19 @@ Set Ecmascript version to compile the TypeScript code to.
   target: "es6"
 }
  ```
+
+ ### 5. Allow JS
+Allows JavaScript files to be imported inside your project, instead of just .ts and .tsx files.
+```JS
+{
+  "allowJs": true // false by default
+}
+```
+
+### 6. Check JS
+Works along with <code>allowJs</code> and reports errors in JavaScript files.
+```JS
+{
+  "checkJs": true // false by default
+}
+```
