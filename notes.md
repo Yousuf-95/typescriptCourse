@@ -95,3 +95,11 @@ Specifies the directory of input TypeScript files to be compiled. For example: <
   "rootDir": "./src"
 }
 ```
+
+### 10. Stop compilation on error
+This option doesnot emit JavaScript files if there is any error. This option is not mentioned in tsconfig file but can be set if required.
+```JS
+{
+  "noEmitOnError": false
+}
+```
