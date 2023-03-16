@@ -79,3 +79,19 @@ Generates sourcemap files which allows debuggers to display original TypeScript 
   "sourceMap": true
 }
 ```
+
+### 8. Out dir
+If specified, JavaScript files will be emitted into this directory. The directory structure of the original source files is preserved. For example: <code>dist</code> directory.
+```JS
+{
+  "outDir": "./dist"
+}
+```
+
+### 9. Root dir
+Specifies the directory of input TypeScript files to be compiled. For example: <code>src</code> directory.
+```JS
+{
+  "rootDir": "./src"
+}
+```
