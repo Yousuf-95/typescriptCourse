@@ -38,6 +38,17 @@ class ITDepartment extends Department {
         }
         this.employees.push(employee);
     }
+
+    // Getter method
+    get getAllAdmins() : string[] {
+        return this.admins;
+    }
+
+    // Setter method
+    set addAdmin(admin: string) {
+        this.admins.push(admin);
+    }
+    
 }
 
 // Create an object from defined class above. 
@@ -47,3 +58,9 @@ accounting.addEmployee("Adam");
 
 let it = new ITDepartment('d2', ['David']);
 console.log(it);
+
+// Execute a getter method
+console.log(it.getAllAdmins);
+
+// Execute a setter method
+it.addAdmin = "Alice";
