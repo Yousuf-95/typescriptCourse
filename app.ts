@@ -1,9 +1,14 @@
 class Department {
-    public name: string; // public access modifier is default.
+    // public name: string; // 'public' access modifier is default.
     private employees: string[] = [];
 
-    constructor(n: string) {
-        this.name = n;
+    // constructor(n: string) {
+    //     this.name = n;
+    // }
+
+    // sborthand syntax to initialize variable in class.
+    constructor(public name: string){
+
     }
 
     describe(this: Department) {
