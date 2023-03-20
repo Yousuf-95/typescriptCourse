@@ -25,6 +25,7 @@ class Department {
 // Inheriting 'Department' class
 class ITDepartment extends Department {
     admins: string[];
+    static employeeCount: number;
 
     constructor(id: string,  admins: string[]) {
         super(id, "IT");
@@ -48,7 +49,10 @@ class ITDepartment extends Department {
     set addAdmin(admin: string) {
         this.admins.push(admin);
     }
-    
+
+    static getEmployeeCount(admin: string) {
+        console.log(this.employeeCount);
+    }
 }
 
 // Create an object from defined class above. 
