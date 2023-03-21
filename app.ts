@@ -68,3 +68,15 @@ console.log(it.getAllAdmins);
 
 // Execute a setter method
 it.addAdmin = "Alice";
+
+abstract class Employee {
+    employeeName: string;
+    age: number;
+
+    constructor(employeeName: string, age: number) {
+        this.employeeName = employeeName;
+        this.age = age;
+    }
+
+    abstract get employeeDetails(): object;
+}
