@@ -50,7 +50,7 @@ class ITDepartment extends Department {
         this.admins.push(admin);
     }
 
-    static getEmployeeCount(admin: string) {
+    static getEmployeeCount() {
         console.log(this.employeeCount);
     }
 }
@@ -78,5 +78,6 @@ abstract class Employee {
         this.age = age;
     }
 
+    // This will be defined in a class that inherits this class
     abstract get employeeDetails(): object;
 }
