@@ -12,3 +12,14 @@ interface Person {
     designation?: string;
 }
 ```
+
+2. Describing an Indexable Object
+```TS
+interface WidgetMap {
+    [name: string]: Widget;
+}
+
+var map: WidgetMap = {};
+map['gear'] = new GearWidget();
+var w = map['gear']; // w is inferred to type Widget
+```
