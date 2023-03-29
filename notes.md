@@ -2,7 +2,7 @@
 
 The only job of an interface in TypeScript is to describe a type. While class and function deal with implementation, interface helps us keep our programs error-free by providing information about the shape of the data we work with. Interfaces can only contain variables and methods in their definition.
 
-### Uses of TypeScript:
+### Uses of TypeScript Interfaces:
 </br>
 
 1. Describing an Object
@@ -114,4 +114,35 @@ type addFn = (a: number, b: number) => number;
 interface addFn {
     (a: number, b: number): number;
 }
+```
+
+
+## Classes
+
+TypeScript offers full support for the class keyword introduced in ES2015.
+```TS
+class Point {} // an empty class
+```
+
+### Fields in a class
+Fields declared in a class without any prefix (like readonly) will create a public writeable property on a class.
+Fields may be prefixed with the <code>readonly</code> modifier. This prevents assignment to the field outside of constructor.
+```TS
+class Point {
+    x: number;
+    y: number;
+    readonly intersection: number;
+
+    // x = 0;
+    // y = 0; // fields can also be initialized.
+
+    constructor(intersection?: number) {
+        this.intersection = intersection;
+    }
+}
+
+let point1 = new Point();
+point1.x = 3;
+point1.y = 3;
+point1.intersection = 3 // will throw an error.
 ```
