@@ -146,3 +146,43 @@ point1.x = 3;
 point1.y = 3;
 point1.intersection = 3 // will throw an error.
 ```
+
+### Constructors
+A constructor is a method that runs every time a new instance of the class is created. This can be used to initialize values in the class.
+```TS
+class Point {
+    x: number;
+    y: number;
+    
+    constructor(x: number, y: number) {
+        this.x = x;
+        this.y = y;
+    }
+}
+```
+The parameters in the constructor is not optional in the example above. This means that when you instantiate the class, you must pass the parameters to the constructor.
+
+### Interitance
+A class can extend only one other class but can implement multiple interfaces.
+
+### Abstract classes
+Abstract classes are similar to normal classes, with two major differences.
+1. They cannot be directly instantiated
+2. They may contain abstract members
+   
+Abstract members are members that must be implemented in inheriting classes. They do not have an implementation in the abstract class itself. When you mark a class as abstract, you are saying that this class has missing functionality that should be implemented in inheriting classes.
+```TS
+abstract class Vehicle {
+    make: string;
+    model: number;
+    type: string;
+
+    abstract vehicleInfo(): void;
+}
+
+class Car extends Vehicle {
+    vehicleInfo(): void {
+        console.log("This is a class for cars");
+    }
+}
+```
