@@ -2,7 +2,7 @@
 
 The only job of an interface in TypeScript is to describe a type. While class and function deal with implementation, interface helps us keep our programs error-free by providing information about the shape of the data we work with. Interfaces can only contain variables and methods in their definition.
 
-### Uses of TypeScript Interfaces:
+## Uses of TypeScript Interfaces:
 </br>
 
 1. Describing an Object
@@ -52,7 +52,7 @@ The only job of an interface in TypeScript is to describe a type. While class an
    }
    ```
 
-### Readonly property in Interface
+## Readonly property in Interface
 Readonly properties cannot be changed once they are initialized. If a class implements an interface with <code>readonly</code> property, then, this restriction is enforced in class as well without having to add any extra <code>readonly</code> property in the class
 ```TS
 interface Car {
@@ -74,7 +74,7 @@ let landCruiser = new Toyota("Land Cruiser", "Toyota");
 landCruiser.make = "Honda"; // this will throw an error.
 ```
 
-### Extending interfaces
+## Extending interfaces
 An interface can extend any other interface and import its properties. This helps in building small and reusable properties. Unlike classes, an interface can extend (or inherit) multiple interfaces.
 ```TS
 interface Engine {
@@ -95,7 +95,7 @@ interface Car extends Engine, Wheel {
 }
 ```
 
-### Optional properties in interfaces
+## Optional properties in interfaces
 Not all use cases require strict implementation of all properties or methods in an interface. In such cases, optional properties can be defined in an interface to handle such scenario.
 
 ```TS
@@ -106,7 +106,7 @@ interface Car {
 }
 ```
 
-### Function types in interface OR Interface for functions
+## Function types in interface OR Interface for functions
 An interface can be used for defining the structure of a function just like <code>Type</code>
 ```TS
 type addFn = (a: number, b: number) => number;
@@ -124,7 +124,7 @@ TypeScript offers full support for the class keyword introduced in ES2015.
 class Point {} // an empty class
 ```
 
-### Fields in a class
+## Fields in a class
 Fields declared in a class without any prefix (like readonly) will create a public writeable property on a class.
 Fields may be prefixed with the <code>readonly</code> modifier. This prevents assignment to the field outside of constructor.
 ```TS
@@ -147,7 +147,7 @@ point1.y = 3;
 point1.intersection = 3 // will throw an error.
 ```
 
-### Constructors
+## Constructors
 A constructor is a method that runs every time a new instance of the class is created. This can be used to initialize values in the class.
 ```TS
 class Point {
@@ -162,10 +162,10 @@ class Point {
 ```
 The parameters in the constructor is not optional in the example above. This means that when you instantiate the class, you must pass the parameters to the constructor.
 
-### Interitance
+## Interitance
 A class can extend only one other class but can implement multiple interfaces.
 
-### Abstract classes
+## Abstract classes
 Abstract classes are similar to normal classes, with two major differences.
 1. They cannot be directly instantiated
 2. They may contain abstract members
@@ -185,4 +185,68 @@ class Car extends Vehicle {
         console.log("This is a class for cars");
     }
 }
+```
+
+## Class fields visibility
+Visibility refers to how code outside of an instantiated class can interact with a member inside the class. Class members in TypeScript may have three possible visibility modifiers: public, protected, and private.
+1. Public: This is the default visibility of class members in TypeScript. When you do not add the visibility modifier to a class member, it is the same as setting it to public. Public class members may be accessed anywhere, without any restrictions.
+ ```TS
+ class Vehicle {
+    readonly make: string;
+    public model: number;
+    public type: string;
+
+    constructor(make: string, model: number, type: string) {
+        this.make =  make;
+        this.model = model;
+        this.type = type;
+    }
+
+    public getDetails() {
+        console.log("Model: " + this.model + "  type: " + this.type);
+    }
+ }
+ let honda = new Vehicle("Honda", 2022, "pickup");
+ console.log(honda.model); // 2022
+ console.log(honda.type); // pickup
+ honda.getDetails(); // Make: Honda  Type: puckup
+ ```
+
+2. Protected: Class members with the protected visibility are only allowed to be used inside the class they are declared in or in the subclasses of that class.
+```TS
+class Vehicle {
+    protected make: string;
+
+    constructor(make: string, model: number, type: string) {
+        this.make =  make;
+    }
+ }
+
+class Car extends Vehicle {
+  getMake() {
+    return `Make: ${this.make}`;
+  }
+}
+let honda = new Car("Honda");
+honda.getMake(); // Make: Honda
+console.log(honda.make); // This will throw an error.
+```
+
+3. Private: Private members are only accessible inside the class that declares them. This means that not even subclasses have access to it.
+```TS
+class Vehicle {
+    private make: string;
+
+    constructor(make: string, model: number, type: string) {
+        this.make =  make;
+    }
+ }
+
+class Car extends Vehicle {
+  getMake() {
+    return `Make: ${this.make}`;
+  }
+}
+let honda = new Car("Honda");
+honda.getMake(); // This will trow an error
 ```
