@@ -147,6 +147,37 @@ point1.y = 3;
 point1.intersection = 3 // will throw an error.
 ```
 
+## Static fields
+Classes may have static members. These members aren’t associated with a particular instance of the class. They can be accessed through the class constructor object itself.
+```TS
+class Point {
+    x: number;
+    y: number;
+    static intersection = 3;
+}
+console.log(Point.x); // 3
+```
+Static members can also use the same public, protected, and private visibility modifiers:
+```TS
+class Point {
+    x: number;
+    y: number;
+    private static intersection = 3;
+}
+console.log(Point.x); // will throw an error
+```
+Static members are also inherited
+```TS
+class Base {
+  static getGreeting() {
+    return "Hello world";
+  }
+}
+class Derived extends Base {
+  myGreeting = Derived.getGreeting();
+} 
+```
+
 ## Constructors
 A constructor is a method that runs every time a new instance of the class is created. This can be used to initialize values in the class.
 ```TS
