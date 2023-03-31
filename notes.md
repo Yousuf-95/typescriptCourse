@@ -165,6 +165,32 @@ The parameters in the constructor is not optional in the example above. This mea
 ## Interitance
 A class can extend only one other class but can implement multiple interfaces.
 
+## Super Calls
+If you have a base class, you’ll need to call <code>super();</code> in your constructor body before using any this. members:
+```TS
+class Vehicle {
+    make: string;
+    model: number;
+
+    constructor(make: string, model: number) {
+        this.make = make;
+        this.model = model;
+    }
+ }
+
+class Car extends Vehicle {
+    type: string;    
+
+     constructor(make: string, model: number, type: string) {
+       super(make, model);
+       this.type = type; // must be set after calling super();
+     }
+}
+let honda = new Car("Honda");
+honda.getMake(); // Make: Honda
+console.log(honda.make); // This will throw an error.
+```
+
 ## Abstract classes
 Abstract classes are similar to normal classes, with two major differences.
 1. They cannot be directly instantiated
