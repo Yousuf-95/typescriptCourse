@@ -177,6 +177,13 @@ class Derived extends Base {
   myGreeting = Derived.getGreeting();
 } 
 ```
+## Special static field names
+It’s generally not safe/possible to overwrite properties from the <code>Function</code> prototype. Because classes are themselves functions that can be invoked with <code>new</code>, certain static names can’t be used. Function properties like <code>name</code>, <code>length</code>, and <code>call</code> aren’t valid to define as static members.
+```TS
+class Base {
+  static name = "Base!"; // not possible 
+}
+```
 
 ## Constructors
 A constructor is a method that runs every time a new instance of the class is created. This can be used to initialize values in the class.
@@ -194,7 +201,29 @@ class Point {
 The parameters in the constructor is not optional in the example above. This means that when you instantiate the class, you must pass the parameters to the constructor.
 
 ## Interitance
-A class can extend only one other class but can implement multiple interfaces.
+A class can extend (inherit) only one other class but can implement multiple interfaces.
+```TS
+class Base {
+    name: string;
+}
+
+class Derived extends Base {
+    derivedName: string;
+}
+
+interface Base1 {
+    name: strig;
+}
+
+interface Base2 {
+    group: string;
+}
+
+interface Derived implements Base1, Base2 {
+    name:  string;
+    group: string;
+}
+```
 
 ## Super Calls
 If you have a base class, you’ll need to call <code>super();</code> in your constructor body before using any this. members:
