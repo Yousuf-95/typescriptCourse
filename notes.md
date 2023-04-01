@@ -336,3 +336,52 @@ class Car extends Vehicle {
 let honda = new Car("Honda");
 honda.getMake(); // This will trow an error
 ```
+
+## Class methods as arrow functions
+If you have a function that will often be called in a way that loses its this context, it can make sense to use an arrow function property instead of a method definition.
+```TS
+class Car {
+    make: string;
+    model: number;
+
+    constructor(make: string, model: string) {
+        this.make = make;
+        this.model = model;
+    }
+
+    getModel() {
+       return `Model: ${this.model}`;
+    }
+}
+const honda = new Car("Honda", 2021);
+honda.getModel(); // Model: 2021
+
+let methods = {
+    model: honda.getModel
+}
+
+console.log(methods.model()) // Model: undefined
+```
+Above behaviour can be fixed by using arrow function as method in class
+```TS
+class Car {
+    make: string;
+    model: number;
+
+    constructor(make: string, model: string) {
+        this.make = make;
+        this.model = model;
+    }
+
+    getModel = () => {
+       return `Model: ${this.model}`;
+    }
+}
+const honda = new Car("Honda", 2021);
+
+let methods = {
+    model: honda.getModel
+}
+
+console.log(methods.model()) // Model: 2021
+```
