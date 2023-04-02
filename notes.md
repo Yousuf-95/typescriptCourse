@@ -385,3 +385,9 @@ let methods = {
 
 console.log(methods.model()) // Model: 2021
 ```
+
+### References:
+* https://www.digitalocean.com/community/tutorials/how-to-use-interfaces-in-typescript
+* https://blog.logrocket.com/understanding-using-interfaces-typescript/
+* https://www.digitalocean.com/community/tutorials/how-to-use-classes-in-typescript
+* https://www.typescriptlang.org/docs/handbook/2/classes.html
