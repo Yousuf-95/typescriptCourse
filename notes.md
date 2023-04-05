@@ -91,3 +91,50 @@ function useVehicle(vehicle: Vehicle) {
   }
 }
 ```
+
+## 3. Discriminated Unions
+Discriminated unions are basically a union type with a tag. To convert a union type into a discriminated union type, we use a common property across our types. This property can be any name and will serve as an ID for the different types. Every type will have a different literal type for that property.
+```TS
+interface Bird {
+    type: 'bird',
+    flyingSpeed: number
+}
+
+interface Horse {
+    type: 'horse',
+    runningSpeed: number
+}
+
+type Animal = Bird | Horse;
+
+function moveAnimal(animal: Animal) {
+    let speed;
+    switch (animal.type) {
+        case 'bird': {
+            speed = animal.flyingSpeed;
+            break;
+        }
+        case 'horse': {
+            speed = animal.runningSpeed;
+            break;
+        }
+    }
+
+    console.log('Moving at speed: ' + speed);
+}
+```
+
+## 4. Function overloading
+In TypeScript, we can specify a function that can be called in different ways by writing overload signatures. To do this, write some number of function signatures (usually two or more), followed by the body of the function.
+```TS
+type Combinable = string | number;
+
+function add(a: string, b: string): string;
+function add(a: number, b: number): number;
+function add(a: Combinable, b: Combinable) {
+    if(typeof a === 'string' || typeof b === 'string') {
+        return a.toString() + b.toString();
+    }
+    return a + b;
+}
+```
