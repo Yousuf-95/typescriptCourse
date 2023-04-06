@@ -138,3 +138,29 @@ function add(a: Combinable, b: Combinable) {
     return a + b;
 }
 ```
+
+## 5. Optional chaining
+Optional chaining lets us write code where TypeScript can immediately stop running some expressions if we run into a null or undefined. The star of the show in optional chaining is the new <code>?.</code> operator for optional property accesses. When we write code like:
+```TS
+let x = foo?.bar.baz();
+
+// Equivalent code without optional chaining would be:
+let x = foo === null || foo === undefined ? undefined : foo.bar.baz();
+```
+this is a way of saying that when foo is defined, foo.bar.baz() will be computed; but when foo is <code>null</code> or <code>undefined</code>, stop what we’re doing and just return <code>undefined</code>.
+
+## 6. Nullish Coalescing operator
+The nullish coalescing operator <code>??</code> can be used to “fall back” to a default value when dealing with <code>null</code> or <code>undefined</code>.
+```TS
+let x = foo ?? bar();
+
+// Equivaluent code without ?? operator
+let x = foo !== null && foo !== undefined ? foo : bar();
+```
+In the above example, <code>foo</code> will be used when its defined or present, but when its <code>null</code> or <code>undefined</code>, bar() wil be used in its place.
+
+
+### References:
+* https://blog.logrocket.com/understanding-discriminated-union-intersection-types-typescript/
+* https://www.typescripttutorial.net/typescript-tutorial/typescript-intersection-types/
+* https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html
