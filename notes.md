@@ -32,3 +32,58 @@ function merge<T extends object, U extends object>(objA: T, objB: U) {
 }
 ```
 In the example above, we extend both the generic type to be of type <code>object</code>. We can extend it to be of any of the types available in TypeScript.
+
+### <code>keyof</code> constraint
+```TS
+function extractAndConvert (obj: object, key: string){
+    return 'Value: ' + obj[key]; // this will give an error as TypeScript doesnot know if 'key' exists in the object argument.
+}
+
+// Solution:
+function extractAndConvert<T extends object, U extends keyof T> (obj: T, key: U){
+    return 'Value: ' + obj[key];
+}
+```
+
+### Generic classes
+Generic classes have a generic type parameter list in angle brackets (<>) following the name of the class.
+```TS
+class DataStorage<T extends string | number | boolean> {
+  private data: T[] = [];
+
+  addItem(item: T) {
+    this.data.push(item);
+  }
+
+  removeItem(item: T) {
+    if (this.data.indexOf(item) === -1) {
+      return;
+    }
+    this.data.splice(this.data.indexOf(item), 1); // -1
+  }
+
+  getItems() {
+    return [...this.data];
+  }
+}
+```
+
+## Generic utility types
+TypeScript utility types are a powerful set of tools that allow developers to manipulate and transform types in innovative and efficient ways. With TypeScript utility types, developers can create new types that are based on existing types, but with modifications that meet their specific needs.
+```TS
+interface Employee {
+    name: string;
+    age: number;
+    email: string;
+}
+
+let employee1: Employee = {}; // this line will have an error because at this time, variable is not of defined type.
+employee1.name = 'John Doe';
+employee1.age = 22;
+employee1.email = 'john@email.com';
+
+// Solution
+let employee2: Partial<Employee> = {};
+...
+...
+```
