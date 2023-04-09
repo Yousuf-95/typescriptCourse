@@ -70,6 +70,7 @@ class DataStorage<T extends string | number | boolean> {
 
 ## Generic utility types
 TypeScript utility types are a powerful set of tools that allow developers to manipulate and transform types in innovative and efficient ways. With TypeScript utility types, developers can create new types that are based on existing types, but with modifications that meet their specific needs.
+All generic utility types can be found on TypeScript documentation page (link in references).
 ```TS
 interface Employee {
     name: string;
@@ -87,3 +88,8 @@ let employee2: Partial<Employee> = {};
 ...
 ...
 ```
+
+### References
+* https://betterprogramming.pub/understanding-typescript-generics-96741f220abf
+* https://blog.devgenius.io/if-youre-familiar-with-typescript-you-ve-probably-heard-of-generics-5da1f843bfc0
+* https://www.typescriptlang.org/docs/handbook/utility-types.html#requiredtype
