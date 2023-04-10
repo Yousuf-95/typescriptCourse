@@ -1,90 +1,56 @@
-// * Intersection types
-// * Intersection in union type
-type typeA = string | number;
-type typeB = number | boolean;
-type typeAB = typeA & typeB;
+//  * Generics
 
-let intersectionType: typeAB = 123;
+// * Generic function with constraint
+// Example 1 (Restricting type of parameter)
+function merge<T extends object, U extends object>(objA: T, objB: U) {
+    return Object.assign(objA, objB);
+}
+const mergedObj = merge({ name: 'Max', hobbies: ['Sports'] }, { age: 30 });
+console.log(mergedObj);
 
-// * Intersection in object type
-interface BusinessPartner {
-    name: string;
-    credit: number;
+// Example 2 (Defining length property on parameter).
+// Without extending Lengthy interface, TypeScript will give an error as length property
+// may not be present in the passed argument.
+interface Lengthy {
+    length: number;
 }
 
-interface Identity {
-    id: number;
-    name: string;
-    aadharNumber: number
-}
-
-interface Contact {
-    email: string;
-    phone: string;
-}
-
-type Employee = Identity & Contact; // contains all fields from Identity and Contact
-
-let employee: Employee = {
-    id: 201,
-    name: "John Doe",
-    email: "john.doe@email.com",
-    phone: "1234567890",
-    aadharNumber: 1234567890
-}
-
-// * Type Casting
-// const paragraph = document.querySelector('p'); // TypeScript knows it is a <p> tag
-// const paragraph = document.getElementById('error-message'); // TypeScript doesnot know if it is a <p> tag
-const userInputElement = document.getElementById('user-input')!; // TypeScript doesnot know it is a <input> tag
-userInputElement.value = "Hello from TypeScript"; // error
-// above error can be solved with Type Casting
-
-const userInputElement1 = <HTMLInputElement>document.getElementById('user-input')!;
-userInputElement1.value = "Hello from TypeScript";
-
-const userInputElement2 = document.getElementById('user-input')! as HTMLInputElement; // Used in React world
-userInputElement2.value = "Hello from TypeScript";
-
-const userInputElement3 = document.getElementById('user-input'); // Removing exclamation mark (null check)
-if(userInputElement3) {
-    (userInputElement3 as HTMLInputElement).value = "Hello from TypeScript";
-}
-
-// * Index Properties
-interface ErrorContainer {
-    // id: number; // Cannot be number
-    id: string;
-    [prop: string]: string
-}
-
-// * Function overloading
-type Combinable = string | number;
-
-function add(a: string, b: string): string; // Overload function (must be just before function implementation)
-function add(a: number, b: number): number;
-function add(a: Combinable, b: Combinable) {
-    if(typeof a === 'string' || typeof b === 'string') {
-        return a.toString() + b.toString();
+function countAndDescribe<T extends Lengthy>(element: T): [T, string] {
+    let descriptionText = 'Got no value.';
+    if (element.length === 1) {
+        descriptionText = 'Got 1 element.';
+    } else if (element.length > 1) {
+        descriptionText = 'Got ' + element.length + ' elements.';
     }
-    return a + b;
+    return [element, descriptionText];
 }
 
-let result = add('Hello','World');
-result.split(' '); // TypeScript knows return type is either number or string and therefore gives an error.
 
-// Solution 1: Type casting
-let result1 = add('Hello', 'World') as string;
-result1.split(' ');
-
-// Solution 2: Function overloading (see above function implementation)
-let result2 = add('Hello', 'World');
-result2.split(' ');
-
-// Nullish coalesing operator use case
-// In the below example, when localStorage.volume is set to 0, the page will set the volume to 0.5 which is unintended.
-// nullinsh coalescing operator (??) avoids some unintended behavior from 0, NaN and "" being treated as falsy values.
-function initializeAudio() {
-    let volume = localStorage.volume || 0.5;
-    // ...
+// "Keyof" constraint
+// Function below shows error because it doesnot know if 'key' property exists in passed object. This can be solved
+// with 'keyof' constraint.
+function extractAndConvert(obj: object, key: string) {
+    return 'Value: ' + obj[key];
 }
+
+function extractAndConvert2<T extends object, U extends keyof T>(obj: T, key: U) {
+    return 'Value: ' + obj[key];
+}
+
+// * Generic Utility types
+interface Employee {
+    name: string;
+    age: number;
+    email: string;
+}
+
+let employee1: Employee = {}; // this line will have an error because at this time, variable is not of defined type.
+employee1.name = 'John Doe';
+employee1.age = 22;
+employee1.email = 'john@email.com';
+
+// Solution
+let employee2: Partial<Employee> = {};
+employee2.name = 'John Doe';
+employee2.age = 22;
+employee2.email = 'john@email.com';
