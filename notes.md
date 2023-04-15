@@ -1,12 +1,13 @@
 ## Decorators
 
-Definition of Decorator:
-<br>
+### Definition of Decorator:
+
 1. Decorators are essentially functions or higher-order functions depending on their usage. It can be used like:
    ```TS
    @log or @log() 
    @validate or @validate()
    ```
+
 2. Decorators are an object-oriented programming (OOP) feature and can only be used on class or class members, not on non-class functions. The following code is not valid:
    ```TS
    @log
@@ -15,6 +16,7 @@ Definition of Decorator:
    }
    // this is not allowed as it is not in a class.
    ```
+   
 3. Decorators allows for the addition of functionality to a class or class member without changing the original code.
 
 4. Decorators execute when a class is defined, not when instantiated.
@@ -38,10 +40,10 @@ class Person {
 ```
 In the above example, "Logger" function is executed even though we donot initialize the class.
 
-Types of decorators:
+## Types of decorators:
 
 1. Class decorators
-   <br>
+   
    Class decorators are used to modify the behavior of a class at compile time.
    When you attach a function to a class as a decorator, you’ll receive the class constructor as the parameter.
    ```TS
@@ -63,8 +65,9 @@ Types of decorators:
    const person1 = new Person();
    person1.greet(); // Hello!
    ```
+
 2. Property decorators
-   <br>
+   
    Property decorators are used to modify the behavior of a class property. They can be applied to the property declaration itself, and can also be used to modify the descriptor object that describes the property's properties.
    
    The property decorator receives two arguments:
@@ -87,3 +90,66 @@ Types of decorators:
    const person1 = new Person();
    person1.name = 'David'; // throws a TypeError
    ```
+
+3. Accessor decorators:
+   
+   An Accessor Decorator is declared just before an accessor declaration. The accessor decorator is applied to the Property Descriptor for the accessor and can be used to observe, modify, or replace an accessor’s definitions.
+   The accessor decorator receives three arguments:
+   * The prototype of the class for an instance member OR the constructor function of the class for a static member.
+   * The name of the member (name of accessor)
+   * The Property Descriptor for the member.
+
+   The descriptor in the accessor decorator has four components – get, set, enumerable, and configurable. Enumerable indicates that the data can be displayed in <code>for..in</code> loop and, configurable means that the data can be modified.
+   ```TS
+   function configurable(value: boolean) {
+      return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+         descriptor.configurable = value;
+      };
+   }
+
+   class Person {
+      name = 'John';
+
+      constructor() {
+         console.log('Creating person object...');
+      }
+
+      @configurable(false)
+      get getName() {
+         return this.name;
+      }
+   }
+   ```
+4. Method decorators:
+   
+   The implementation of method decorators is very similar to accessor decorators.
+   The method decorator also receives three arguments:
+   * The prototype of the class for an instance member OR the constructor function of the class for a static member.
+   * The name of the member (name of accessor)
+   * The Property Descriptor for the member.
+
+    The descriptor in method decorator has four components – value, writable, enumerable, and configurable.<br>
+    Value field has the function definition itself.<br>
+    Writable indicates if the property can be changed with an assignment operator.<br>
+    Enumerable indicates that the data can be displayed in <code>for..in</code> loop and,<br>
+    Configurable means that the data can be modified.
+   ```TS
+   function enumerable(value: boolean) {
+     return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+       descriptor.enumerable = value;
+     };
+   }
+
+   class Person {
+    name = 'John';
+
+    constructor() {
+      console.log('Creating person object...');
+    }
+
+    @enumerable(false)
+    greet() {
+      console.log("Hello!");
+    }
+   }
+    ```
