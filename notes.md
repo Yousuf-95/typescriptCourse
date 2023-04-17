@@ -16,7 +16,7 @@
    }
    // this is not allowed as it is not in a class.
    ```
-   
+
 3. Decorators allows for the addition of functionality to a class or class member without changing the original code.
 
 4. Decorators execute when a class is defined, not when instantiated.
@@ -40,7 +40,7 @@ class Person {
 ```
 In the above example, "Logger" function is executed even though we donot initialize the class.
 
-## Types of decorators:
+### Types of decorators:
 
 1. Class decorators
    
@@ -153,3 +153,50 @@ In the above example, "Logger" function is executed even though we donot initial
     }
    }
     ```
+
+### Decorator factory
+The decorator factory is a function that returns the decorator function itself. This enables you to customize the behavior of your decorators by passing some parameters in the factory. In the example below, we can change <code>configurable</code> property as required in different scenarios.
+```TS
+function configurable(value: boolean) {
+ return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+    descriptor.configurable = value;
+ };
+}
+
+class Person {
+ name = 'John';
+
+ constructor() {
+   console.log('Creating person object...');
+ }
+
+ @configurable(false)
+ get getName() {
+   return this.name;
+ }
+}
+```
+
+### Order of execution of decorators and decorator factories
+In the example below, the decorator factory function executes from top to bottom, i.e, <code>DecoratorFactory1</code> is  executed first followed by <code>DecoratorFactory2</code> while the decorators themselves are executed bottom to top, i.e, decorator function 2 is executed first followed by decorator function 1.
+```TS
+function DecoratorFactory1(logString: string) {
+  // Decorator function 1
+  return function(constructor: Function) {
+    console.log(logString);
+  }
+}
+
+function DecoratorFactory2(logValue: string) {
+  // Decorator function 2
+  return function(constructor: Function) {
+    console.log(logValue);
+  }
+}
+@DecoratorFactory1('Decorator 1')
+@DecoratorFactory2('Decorator 2')
+class Person {
+ name = 'John';
+ ...
+}
+```
