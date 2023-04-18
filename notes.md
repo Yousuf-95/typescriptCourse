@@ -189,7 +189,7 @@ In the above example, "Logger" function is executed even though we donot initial
    ```
    Parameter decorator serves primarily as a marker adding information to a method parameter. The official documentation clearly says this:
    > A parameter decorator can only be used to observe that a parameter has been declared on a method.
-   
+
 ### Decorator factory
 The decorator factory is a function that returns the decorator function itself. This enables you to customize the behavior of your decorators by passing some parameters in the factory. In the example below, we can change <code>configurable</code> property as required in different scenarios.
 ```TS
@@ -236,3 +236,11 @@ class Person {
  ...
 }
 ```
+
+### References:
+1. https://dev.to/marwaabdelaal/decorators-in-typescript-2b2f
+2. https://www.digitalocean.com/community/tutorials/how-to-use-decorators-in-typescript
+3. https://www.typescriptlang.org/docs/handbook/decorators.html#metadata
+4. https://dev.to/danywalls/decorators-in-typescript-with-example-part-1-m0f
+5. https://www.programmingempire.com/how-to-create-accessor-decorators-in-typescript/
+6. https://techsparx.com/nodejs/typescript/decorators/parameters.html
