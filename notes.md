@@ -125,7 +125,7 @@ In the above example, "Logger" function is executed even though we donot initial
    The implementation of method decorators is very similar to accessor decorators.
    The method decorator also receives three arguments:
    * The prototype of the class for an instance member OR the constructor function of the class for a static member.
-   * The name of the member (name of accessor)
+   * The name of the member (name of method)
    * The Property Descriptor for the member.
 
     The descriptor in method decorator has four components – value, writable, enumerable, and configurable.<br>
@@ -153,7 +153,43 @@ In the above example, "Logger" function is executed even though we donot initial
     }
    }
     ```
+5. Parameter decorators:
+   
+   Parameter decorators are attached to the parameters of class constructors, or class member methods.
+   The parameter decorator receives three arguments:
+   * The prototype of the class for an instance member OR the constructor function of the class for a static member.
+   * A string giving the name of the property
+   * The ordinal index of the parameter in the function’s parameter list
+  
+   The first two arguments are similar to the arguments supplied to property and accessor decorator functions. The third refers to the position within the parameter list of a class method.
+   ```TS
+   function logParameter(target: Object, propertyKey: string | symbol, parameterIndex: number) {
+       console.log(`logParameter ${target} ${util.inspect(target)} ${String(propertyKey)} ${parameterIndex}`);
+   }
 
+   class Person {
+    name:string;
+    age: number;
+
+    constructor(name:string, age:number) {
+      console.log('Creating person object...');
+      this.name = name;
+      this.age = age;
+    }
+
+    updateDetails(@logParameter name:string, @logParameter age:number) {
+        this.age = age;
+        this.name = name;
+    }
+   }
+
+   // Output: 
+   // logParameter [object Object] {} updateDetails 1
+   // logParameter [object Object] {} updateDetails 0
+   ```
+   Parameter decorator serves primarily as a marker adding information to a method parameter. The official documentation clearly says this:
+   > A parameter decorator can only be used to observe that a parameter has been declared on a method.
+   
 ### Decorator factory
 The decorator factory is a function that returns the decorator function itself. This enables you to customize the behavior of your decorators by passing some parameters in the factory. In the example below, we can change <code>configurable</code> property as required in different scenarios.
 ```TS
