@@ -44,11 +44,27 @@ class ProjectInput {
    private configure() {
       this.element.addEventListener('submit', this.submitHandler);
    }
+
+   private gatherUserInput(): [string, string, number] | void {
+      const enteredTitle = this.titleInputElement.value;
+      const enteredDescription = this.descriptionInputElement.value;
+      const enteredPeople = this.peopleInputElement.value;
+
+      if(enteredTitle.trim().length === 0 || enteredDescription.trim().length === 0 || enteredPeople.trim().length === 0) {
+         alert('invalid input');
+         return;
+      }
+      return [enteredTitle, enteredDescription, parseFloat(enteredPeople)];
+   }
    
    @autobind
    private submitHandler(event: Event) {
       event.preventDefault();
-      console.log(this.titleInputElement.value);
+      const userInput = this.gatherUserInput();
+      if(Array.isArray(userInput)){
+         const [title, description, people] = userInput;
+         console.log(title, description, people);
+      }
    }
 }
 
