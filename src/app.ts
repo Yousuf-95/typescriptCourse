@@ -15,9 +15,15 @@ enum ProjectStatus {
  }
  
  // Project State Management
- type Listener = (items: Project[]) => void;
+ type Listener<T> = (items: T[]) => void;
 
-// Project State Management
+ class State<T> {
+   protected listeners: Listener<T>[] = [];
+ 
+   addListener(listenerFn: Listener<T>) {
+     this.listeners.push(listenerFn);
+   }
+ }
 
 class ProjectState {
    private listeners: any[] = [];
