@@ -257,6 +257,12 @@ class ProjectList {
    private attach() {
       this.hostElement.insertAdjacentElement('beforeend', this.element);
    }
+
+   @autobind
+   dragOverHandler(_: DragEvent) {
+      const listEl = this.element.querySelector('ul')!;
+      listEl.classList.add('droppable');
+   }
 }
 
 // ProjectItem Class
