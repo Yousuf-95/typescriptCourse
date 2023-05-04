@@ -130,8 +130,6 @@ class ProjectInput {
    descriptionInputElement: HTMLInputElement;
    peopleInputElement: HTMLInputElement;
 
-   
-
    constructor() {
       this.templateElement = document.getElementById('project-input')! as HTMLTemplateElement;
       this.hostElement = document.getElementById('app')! as HTMLDivElement;
