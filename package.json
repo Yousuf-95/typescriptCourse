@@ -21,7 +21,6 @@
   "homepage": "https://github.com/Yousuf-95/typescriptCourse#readme",
   "devDependencies": {
     "clean-webpack-plugin": "^4.0.0",
-    "lite-server": "^2.6.1",
     "ts-loader": "^9.4.2",
     "typescript": "^5.0.4",
     "webpack": "^5.82.0",
