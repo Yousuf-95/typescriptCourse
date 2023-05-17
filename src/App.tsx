@@ -1,15 +1,23 @@
-import React from 'react';
-
-import TodoList from './components/TodoList';
+import React, { useState } from "react";
+import TodoList from "./components/TodoList";
+import NewToDo from "./components/NewToDo";
+import { Todo } from './todo.model';
 
 const App: React.FC = () => {
-  const todos = [{ id: 't1', text: 'Finish the course' }];
+  const [todos, setTodos] = useState<Todo[]>([]);
+
+  const todoAddHandler = (text: string) => {
+    setTodos(prevTodos => [...prevTodos, { id: Math.random().toString(), text: text }]);
+  }
+
   return (
-    <div className="App">
-      {/* A component that adds todos */}
-      <TodoList items={todos} />
-    </div>
+    <>
+      <div className="App">
+        <NewToDo onAddTodo={todoAddHandler} />
+        <TodoList list={todos} />
+      </div>
+    </>
   );
-};
+}
 
 export default App;
